@@ -23,6 +23,10 @@ class CutCraftCylinder(CutCraftShape):
                         action="store", type="int",
                         dest="supports", default=3,
                         help="Number of supports")
+        self.OptionParser.add_option("--supwidth",
+                        action="store", type="float",
+                        dest="supwidth", default=6.0,
+                        help="Support Width")
         self.OptionParser.add_option("--height",
                         action="store", type="float",
                         dest="height", default=60.0,
@@ -42,6 +46,7 @@ class CutCraftCylinder(CutCraftShape):
         vertices = self.options.vertices
         levels = self.options.levels
         supports = self.options.supports
+        supwidth = self.unittouu( str(self.options.supwidth) + self.unit )
         height = self.unittouu( str(self.options.height) + self.unit )
         outer = self.unittouu( str(self.options.outer) + self.unit )
         inner = self.unittouu( str(self.options.inner) + self.unit )
@@ -50,7 +55,7 @@ class CutCraftCylinder(CutCraftShape):
             self._error("ERROR: Outer diameter must be greater than inner diameter.")
             exit()
 
-        shape = Cylinder(height, outer, inner, vertices, supports, 2.0*self.thickness, levels,
+        shape = Cylinder(height, outer, inner, vertices, supports, supwidth/2.0, supwidth, levels,
                          self.thickness, self.kerf)
 
         self.pack(shape)

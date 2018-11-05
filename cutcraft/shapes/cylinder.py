@@ -23,7 +23,7 @@ from .shape import Shape
 
 class Cylinder(Shape):
     """ List of segments that make up a part. """
-    def __init__(self, height, radius, inradius, segments, cuts, cutdepth, platforms,
+    def __init__(self, height, radius, inradius, segments, cuts, cutdepth, supwidth, platforms,
                  thickness, kerf):
         super(Cylinder, self).__init__(thickness, kerf)
 
@@ -39,6 +39,6 @@ class Cylinder(Shape):
             self.parts.append((p, level))
 
         for _ in range(cuts):
-            p = Pier(height, thickness*6.0, thickness*3.0, [(level, 0.0) for level in levels], thickness=thickness)
+            p = Pier(height, supwidth, supwidth-cutdepth, [(level, 0.0) for level in levels], thickness=thickness)
             self.piers.append((p, None))
             self.parts.append((p, None))
