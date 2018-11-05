@@ -25,4 +25,5 @@ def test_shape():
     assert(sh.thickness == 1.0)
     assert(sh.kerf == 0.1)
 
-    cyl = cs.Cylinder(10.0, 1.0, 0.6, 4, 4, 0.2, 3, thickness=1.0, kerf=0.1)
+    cyl = cs.Cylinder(10.0, 1.0, 0.6, 4, 4, 0.2, 0.4, 3, thickness=1.0, kerf=0.1)
+    assert(len(cyl.parts) == 7)
