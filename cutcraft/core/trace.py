@@ -68,8 +68,8 @@ class Trace(object):
         self.y = [y + pt.y for y in self.y]
 
     def clear(self):
-        self.x.clear()
-        self.y.clear()
+        self.x = []
+        self.y = []
 
     def svg(self):
         # Generate SVG string for this trace.
