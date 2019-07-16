@@ -23,7 +23,7 @@
 			<param name="supwidth"  type="float" min="0.1"  max="1000.0"  _gui-text="Support Width">6.0</param>
 			<_param name="help2"    type="description" xml:space="preserve">------------------------------</_param>
 			<param name="thickness" type="float" min="0.1"  max="1000.0"  precision="3"  _gui-text="Material Thickness">5.0</param>
-			<param name="kerf"      type="float" min="0.1"  max="1000.0"  precision="3"  _gui-text="Laser Cutter Kerf">0.01</param>
+			<param name="kerf"      type="float" min="0.0"  max="1000.0"  precision="3"  _gui-text="Laser Cutter Kerf">0.01</param>
             <param name="linethickness" _gui-text="Line Thickness" type="optiongroup" appearance="minimal">
                 <option value="1px">1 pixel</option>
                 <option value="0.002in">hairline</option>

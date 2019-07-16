@@ -240,34 +240,36 @@ def test_circle():
 def test_kerf():
     # Clockwise square.
     sq = cc.Circle(10.0, 4, 0)
+    sq.close()
 
-    assert(sq.x == pytest.approx([0.0, 10.0, 0.0, -10.0]))
-    assert(sq.y == pytest.approx([10.0, 0.0, -10.0, 0.0]))
+    assert(sq.x == pytest.approx([0.0, 10.0, 0.0, -10.0, 0.0]))
+    assert(sq.y == pytest.approx([10.0, 0.0, -10.0, 0.0, 10.0]))
 
     # Clockwise kerf expands the size of the cut object.
     sq.applykerf(math.sqrt(50.0))
 
-    assert(sq.x == pytest.approx([0.0, 20.0, 0.0, -20.0]))
-    assert(sq.y == pytest.approx([20.0, 0.0, -20.0, 0.0]))
+    assert(sq.x == pytest.approx([0.0, 20.0, 0.0, -20.0, 0.0]))
+    assert(sq.y == pytest.approx([20.0, 0.0, -20.0, 0.0, 20.0]))
 
     # Reverse the trace so next kerf cut is inside/smaller.
     sq = reversed(sq)
 
-    assert(sq.x == pytest.approx([-20.0, 0.0, 20.0, 0.0]))
-    assert(sq.y == pytest.approx([0.0, -20.0, 0.0, 20.0]))
+    assert(sq.x == pytest.approx([0.0, -20.0, 0.0, 20.0, 0.0]))
+    assert(sq.y == pytest.approx([20.0, 0.0, -20.0, 0.0, 20.0]))
 
     sq.applykerf(math.sqrt(50.0))
 
-    assert(sq.x == pytest.approx([-10.0, 0.0, 10.0, 0.0]))
-    assert(sq.y == pytest.approx([0.0, -10.0, 0.0, 10.0]))
+    assert(sq.x == pytest.approx([0.0, -10.0, 0.0, 10.0, 0.0]))
+    assert(sq.y == pytest.approx([10.0, 0.0, -10.0, 0.0, 10.0]))
 
     # Test kerf on vertical/horizontal lines.
     sq = cc.Circle(math.sqrt(200.0), 4, 0, rotation=math.pi/4)
+    sq.close()
 
-    assert(sq.x == pytest.approx([10.0, 10.0, -10.0, -10.0]))
-    assert(sq.y == pytest.approx([10.0, -10.0, -10.0, 10.0]))
+    assert(sq.x == pytest.approx([10.0, 10.0, -10.0, -10.0, 10.0]))
+    assert(sq.y == pytest.approx([10.0, -10.0, -10.0, 10.0, 10.0]))
 
     sq.applykerf(10.0)
 
-    assert(sq.x == pytest.approx([20.0, 20.0, -20.0, -20.0]))
-    assert(sq.y == pytest.approx([20.0, -20.0, -20.0, 20.0]))
+    assert(sq.x == pytest.approx([20.0, 20.0, -20.0, -20.0, 20.0]))
+    assert(sq.y == pytest.approx([20.0, -20.0, -20.0, 20.0, 20.0]))

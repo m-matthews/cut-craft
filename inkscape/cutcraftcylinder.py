@@ -55,7 +55,7 @@ class CutCraftCylinder(CutCraftShape):
             self._error("ERROR: Outer diameter must be greater than inner diameter.")
             exit()
 
-        shape = Cylinder(height, outer, inner, vertices, supports, supwidth/2.0, supwidth, levels,
+        shape = Cylinder(height, outer/2.0, inner/2.0, vertices, supports, supwidth/2.0, supwidth, levels,
                          self.thickness, self.kerf)
 
         self.pack(shape)

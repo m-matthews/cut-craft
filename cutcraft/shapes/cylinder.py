@@ -42,3 +42,7 @@ class Cylinder(Shape):
             p = Pier(height, supwidth, supwidth-cutdepth, [(level, 0.0) for level in levels], thickness=thickness)
             self.piers.append((p, None))
             self.parts.append((p, None))
+
+        if kerf:
+            for part, _ in self.parts:
+                part.applykerf(kerf)

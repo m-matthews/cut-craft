@@ -24,7 +24,7 @@ from math import pi
 
 class Circular(Platform):
     """ Circular Platform. """
-    def __init__(self, radius, inradius, segments, cuts, cutdepth, start=0, end=pi*2, rotation=0,
+    def __init__(self, radius, inradius, segments, cuts, cutdepth, start=0.0, end=pi*2, rotation=0.0,
                  origin=Point(0.0, 0.0), thickness=0.0):
         super(Circular, self).__init__(thickness)
         self.radius = radius
