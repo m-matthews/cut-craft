@@ -59,7 +59,8 @@ class Trace(object):
         self.clear()
         self.x += [pt.x for pt in pts]
         self.y += [pt.y for pt in pts]
-
+        self.x += self.x[:1]
+        self.y += self.y[:1]
         return
 
     def offset(self, pt):

@@ -19,6 +19,7 @@
 from .point import Point
 from .line import Line
 from .trace import Trace
+from ..util import isclose
 from math import pi, sin, cos, asin
 
 class Circle(Trace):
@@ -90,10 +91,12 @@ class Circle(Trace):
 
             if atype != 'SEG' or (atype == 'SEG' and not incut):
                 for pos in angle[6]:
-                    x = pos.x
-                    y = pos.y
-                    self.x.append(origin.x + x)
-                    self.y.append(origin.y + y)
+                    x = origin.x + pos.x
+                    y = origin.y + pos.y
+                    if len(self.x)==0 or not (isclose(x, self.x[-1]) and isclose(y, self.y[-1])):
+                        self.x.append(x)
+                        self.y.append(y)
+
         return
 
     def _cnext(self, angles, i, item):

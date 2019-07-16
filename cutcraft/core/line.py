@@ -59,12 +59,7 @@ class Line(object):
         dx = self.x[1] - self.x[0]
         dy = self.y[1] - self.y[0]
 
-        if isclose(dx, 0.0):
-            d = dy
-        elif isclose(dy, 0.0):
-            d = dy
-        else:
-            d = sqrt(dx*dx + dy*dy)
+        d = sqrt(dx*dx + dy*dy)
 
         return dx/d, -dy/d
 
