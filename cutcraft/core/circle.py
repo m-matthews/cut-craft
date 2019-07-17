@@ -29,6 +29,8 @@ class Circle(Trace):
         self.thickness = thickness
         self.kerf = kerf
 
+        partial = True if start != 0.0 or end != pi*2.0 else False
+
         if cuts==0:
             c = 0.0
         else:
@@ -37,9 +39,14 @@ class Circle(Trace):
             if cutdepth <= 0.0:
                 raise ValueError("cutcraft.circle: parameter 'cutdepth' not set when 'cuts' greater than zero.")
             c = asin(self.thickness/2/radius)
-        angles = [[rotation+pi*2/segments*seg, 'SEG'] for seg in range(segments)] + \
-                 [[rotation+pi*2/cuts*cut-c, '<CUT'] for cut in range(cuts)] + \
-                 [[rotation+pi*2/cuts*cut+c, 'CUT>'] for cut in range(cuts)]
+        if partial:
+            angles = [[rotation+start+(end-start)/segments*seg, 'SEG'] for seg in range(segments+1)] + \
+                     [[rotation+start+(end-start)/(cuts+1)*cut-c, '<CUT'] for cut in range(1, cuts+1)] + \
+                     [[rotation+start+(end-start)/(cuts+1)*cut+c, 'CUT>'] for cut in range(1, cuts+1)]
+        else:
+            angles = [[rotation+end/segments*seg, 'SEG'] for seg in range(segments)] + \
+                     [[rotation+end/cuts*cut-c, '<CUT'] for cut in range(cuts)] + \
+                     [[rotation+end/cuts*cut+c, 'CUT>'] for cut in range(cuts)]
         angles = sorted(angles)
         if angles[0][1] == 'CUT>':
             angles = angles[1:] + [angles[0]]
