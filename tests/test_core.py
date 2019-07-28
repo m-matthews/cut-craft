@@ -273,3 +273,11 @@ def test_kerf():
 
     assert(sq.x == pytest.approx([20.0, 20.0, -20.0, -20.0, 20.0]))
     assert(sq.y == pytest.approx([20.0, -20.0, -20.0, 20.0, 20.0]))
+
+def test_fingerjoint():
+    for style in ('depth','height'):
+        fj = cc.FingerJoint(17.0, 2.0, style)
+        assert(fj.fingers == pytest.approx([0.0, 4.0, 7.0, 10.0, 13.0, 17.0]))
+
+    fj = cc.FingerJoint(16.0, 2.0, 'width', thickness=1.0)
+    assert(fj.fingers == pytest.approx([1.0, 3.0, 5.0, 7.0, 9.0, 11.0, 13.0, 15.0]))

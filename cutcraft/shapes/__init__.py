@@ -17,9 +17,9 @@
 #   along with CutCraft.  If not, see <http://www.gnu.org/licenses/>.
 
 from .shape import Shape
+from .box import Box
 from .cone import Cone
 from .cylinder import Cylinder
 from .sphere import Sphere
 
-__all__ = ["Shape", "Cone", "Cylinder", "Sphere"]
-
+__all__ = ["Shape", "Box", "Cone", "Cylinder", "Sphere"]

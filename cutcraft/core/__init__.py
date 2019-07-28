@@ -23,5 +23,6 @@ from .trace import Trace
 from .circle import Circle
 from .part import Part
 from .neopixel import NeoPixel
+from .fingerjoint import FingerJoint
 
-__all__ = ["Point", "Line", "Rectangle", "Trace", "Circle", "Part", "NeoPixel"]
+__all__ = ["Point", "Line", "Rectangle", "Trace", "Circle", "Part", "NeoPixel", "FingerJoint"]
