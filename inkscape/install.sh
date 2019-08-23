@@ -12,7 +12,7 @@ cp cutcraft*.py $DEST
 cp cutcraft*.inx $DEST
 mkdir  $DEST/cutcraft
 cd ../cutcraft
-cp --parents `find . -name \*.py` $DEST/cutcraft
+rsync -R `find . -name \*.py` $DEST/cutcraft
 
 
 echo "Installation of cut-craft extensions for Inkscape complete."
