@@ -19,38 +19,48 @@
 from .point import Point
 from .trace import Trace
 from .part import Part
-from math import pi, sin, cos
+from math import pi, sin, cos, sqrt
 
 class NeoPixel(Part):
-    rings = [[1, 0 / 100], [6, 16/2 / 100], [12, 30/2 / 100]]
-    size = 2.5 / 100
+    rings = [[1, 0.0], [6, 16.0/2.0], [12, 30.0/2.0]]
+    size = 5.0
 
     """ Line class defined by start and end Points. """
-    def __init__(self, origin=Point(0.0, 0.0), thickness=0.0, kerf=0.0):
+    def __init__(self, style='rings', origin=Point(0.0, 0.0), scale=1.0, rotate=0.0):
         super(NeoPixel, self).__init__()
-        self.thickness = thickness
-        self.kerf = kerf
+        self.scale = scale
 
-        for ring in self.rings:
-            pixels = ring[0]
-            radius = ring[1]
-            for pixel in range(pixels):
-                seg = Trace()
-                a = pi*2 * pixel / pixels
-                self._pixel(seg, origin + Point(sin(a) * radius, cos(a) * radius), pi/4 + a)
-                self += seg
+        if style=='rings':
+            for ring in self.rings:
+                pixels = ring[0]
+                radius = ring[1] * self.scale
+                for pixel in range(pixels):
+                    a = rotate + pi*2 * pixel / pixels
+                    seg = self._pixel(origin + Point(sin(a) * radius, cos(a) * radius),
+                                      pi/4 + a)
+                    self += seg
+        elif style=='strip':
+            xo = origin.x
+            yo = origin.y
+            xsize = 25.4*2.0*self.scale
+            size = self.size*self.scale
+            seg = Trace() + \
+                  Point(xo-xsize/2.0, yo+size/2.0) + \
+                  Point(xo-xsize/2.0, yo-size/2.0) + \
+                  Point(xo+xsize/2.0, yo-size/2.0) + \
+                  Point(xo+xsize/2.0, yo+size/2.0)
+            seg.close()
+            self += seg
         return
 
-    def _pixel(self, seg, position, rotation):
-        x = []
-        y = []
+    def _pixel(self, position, rotation):
+        seg = Trace()
         xo = position.x
         yo = position.y
+        size = sqrt(2.0*(self.size*self.scale)**2)
         for corner in range(4):
             # Points added in counterclockwise direction as this is an inner cut.
-            a = rotation-corner/4*2*pi
-            x.append(xo + sin(a) * self.size)
-            y.append(yo + cos(a) * self.size)
-        seg.x += x
-        seg.y += y
-        return
+            a = rotation-2.0*pi*corner/4.0
+            seg += Point(xo + sin(a) * size/2.0, yo + cos(a) * size/2.0)
+        seg.close()
+        return seg

@@ -21,5 +21,6 @@ from .box import Box
 from .cone import Cone
 from .cylinder import Cylinder
 from .sphere import Sphere
+from .rollerbot import RollerBot
 
-__all__ = ["Shape", "Box", "Cone", "Cylinder", "Sphere"]
+__all__ = ["Shape", "Box", "Cone", "Cylinder", "Sphere", "RollerBot"]

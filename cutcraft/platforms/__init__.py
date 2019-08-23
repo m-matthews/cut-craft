@@ -18,5 +18,6 @@
 
 from .platform import Platform
 from .circular import Circular
+from .rollerframe import RollerFrame
 
-__all__ = ["Platform", "Circular"]
+__all__ = ["Platform", "Circular", "RollerFrame"]
