@@ -70,20 +70,12 @@ class RollerFrame(Platform):
                 # Central Motor Position.
                 inner = Trace() + \
                         Point(-barsize/2.0, -barsize/2.0) + \
-                        Point(-barsize/2.0, -barsize/6.0) + \
-                        Point(-barsize/2.0+thickness/2.0, -barsize/6.0) + \
-                        Point(-barsize/2.0+thickness/2.0, barsize/6.0) + \
-                        Point(-barsize/2.0, barsize/6.0) + \
                         Point(-barsize/2.0, barsize/2.0) + \
                         Point(-barsize/6.0, barsize/2.0) + \
                         Point(-barsize/6.0, barsize/2.0-thickness/2.0) + \
                         Point(barsize/6.0, barsize/2.0-thickness/2.0) + \
                         Point(barsize/6.0, barsize/2.0) + \
                         Point(barsize/2.0, barsize/2.0) + \
-                        Point(barsize/2.0, barsize/6.0) + \
-                        Point(barsize/2.0-thickness/2.0, barsize/6.0) + \
-                        Point(barsize/2.0-thickness/2.0, -barsize/6.0) + \
-                        Point(barsize/2.0, -barsize/6.0) + \
                         Point(barsize/2.0, -barsize/2.0) + \
                         Point(barsize/6.0, -barsize/2.0) + \
                         Point(barsize/6.0, -barsize/2.0+thickness/2.0) + \
@@ -104,24 +96,9 @@ class RollerFrame(Platform):
                         Point(-barsize/2.0*0.6, barsize/2.0) + \
                         Point(barsize/2.0, barsize/2.0) + \
                         Point(barsize/2.0, barsize/9.0) + \
-                        Point(barsize/2.0*0.8, 0.0) + \
+                        Point(barsize/2.0*1.2, 0.0) + \
                         Point(barsize/2.0, -barsize/9.0) + \
                         Point(barsize/2.0, -barsize/2.0)
-                if 0:
-                    inner = Trace() + \
-                            Point(-barsize/2.0, -barsize/2.0) + \
-                            Point(-barsize/2.0, -barsize/2.0*0.9) + \
-                            Point(-barsize/2.0*0.6, -barsize/2.0*0.9) + \
-                            Point(-barsize/2.0*0.6, -barsize/2.0*0.55) + \
-                            Point(-barsize/2.0, -barsize/2.0*0.55) + \
-                            Point(-barsize/2.0, barsize/2.0*0.55) + \
-                            Point(-barsize/2.0*0.6, barsize/2.0*0.55) + \
-                            Point(-barsize/2.0*0.6, barsize/2.0) + \
-                            Point(barsize/2.0, barsize/2.0) + \
-                            Point(barsize/2.0, barsize/9.0) + \
-                            Point(barsize/2.0*0.8, 0.0) + \
-                            Point(barsize/2.0, -barsize/9.0) + \
-                            Point(barsize/2.0, -barsize/2.0)
                 inner.close()
                 self.traces.append(reversed(inner))
 
