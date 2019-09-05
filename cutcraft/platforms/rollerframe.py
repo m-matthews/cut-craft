@@ -88,16 +88,17 @@ class RollerFrame(Platform):
             if part_id in (1,2,3):
                 # Central Motor Position and Bar.
                 inner = Trace() + \
-                        Point(-barsize/2.0*0.6, -barsize/2.0) + \
-                        Point(-barsize/2.0*0.6, -barsize/2.0*0.55) + \
+                        Point(-barsize/2.0*1.3, -barsize/2.0) + \
+                        Point(-barsize/2.0*1.3, -barsize/2.0*0.55) + \
                         Point(-barsize/2.0, -barsize/2.0*0.55) + \
                         Point(-barsize/2.0, barsize/2.0*0.55) + \
-                        Point(-barsize/2.0*0.6, barsize/2.0*0.55) + \
-                        Point(-barsize/2.0*0.6, barsize/2.0) + \
+                        Point(-barsize/2.0*1.3, barsize/2.0*0.55) + \
+                        Point(-barsize/2.0*1.3, barsize/2.0) + \
                         Point(barsize/2.0, barsize/2.0) + \
-                        Point(barsize/2.0, barsize/9.0) + \
-                        Point(barsize/2.0*1.2, 0.0) + \
-                        Point(barsize/2.0, -barsize/9.0) + \
+                        Point(barsize/2.0, barsize/10.0) + \
+                        Point(barsize/2.0*1.2, barsize/20.0) + \
+                        Point(barsize/2.0*1.2, -barsize/20.0) + \
+                        Point(barsize/2.0, -barsize/10.0) + \
                         Point(barsize/2.0, -barsize/2.0)
                 inner.close()
                 self.traces.append(reversed(inner))
