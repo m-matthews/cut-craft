@@ -23,7 +23,7 @@ from math import pi, sin, cos, sqrt
 
 class NeoPixel(Part):
     rings = [[1, 0.0], [6, 16.0/2.0], [12, 30.0/2.0]]
-    size = 5.0
+    size = 5.5
 
     """ Line class defined by start and end Points. """
     def __init__(self, style='rings', origin=Point(0.0, 0.0), scale=1.0, rotate=0.0):
