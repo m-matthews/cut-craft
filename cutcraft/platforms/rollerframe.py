@@ -335,6 +335,16 @@ class RollerFrame(Platform):
             np = NeoPixel(style='strip', origin=Point(facewidth/2.0, faceheight*0.80), scale=scale)
             self.traces.extend(np.traces)
 
+            # Camera
+            csize = 8.5*scale
+            t = Trace() + \
+                Point(facewidth/2.0 - csize/2.0, faceheight/2.5 - csize/2.0) + \
+                Point(facewidth/2.0 + csize/2.0, faceheight/2.5 - csize/2.0) + \
+                Point(facewidth/2.0 + csize/2.0, faceheight/2.5 + csize/2.0) + \
+                Point(facewidth/2.0 - csize/2.0, faceheight/2.5 + csize/2.0)
+            t.close()
+            self.traces.append(t)
+
     def _faceangle(self, size, radius):
         # Returns total angle required for a face.
         o = sqrt(2.0*(size**2))*0.5
