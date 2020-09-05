@@ -4,7 +4,6 @@
 	<id>cutcraft.cylinder</id>
 	<dependency type="executable" location="extensions">cutcraftshape.py</dependency>
 	<dependency type="executable" location="extensions">cutcraftcylinder.py</dependency>
-    <dependency type="executable" location="extensions">inkex.py</dependency>
 
 	<param name='active-tab' type="notebook">
 		<page name="title" _gui-text="Cylinder Properties">
@@ -13,7 +12,7 @@
                 <option value="cm">cm</option>
                 <option value="in">in</option>
             </param>
-			<_param name="help1"    type="description" xml:space="preserve">------------------------------</_param>
+			<separator/>
 			<param name="height"    type="float" min="10.0" max="1000.0"  precision="3"  _gui-text="Height">60.0</param>
 			<param name="outer"     type="float" min="0.1"  max="1000.0"  precision="3"  _gui-text="Outer diameter">60.0</param>
 			<param name="inner"     type="float" min="0.1"  max="1000.0"  precision="3"  _gui-text="Inner diameter">30.0</param>
@@ -21,7 +20,7 @@
 			<param name="levels"    type="int"   min="2"    max="100"     _gui-text="Number of Levels (2..100)">2</param>
 			<param name="supports"  type="int"   min="3"    max="18"      _gui-text="Number of Supports (3..18)">3</param>
 			<param name="supwidth"  type="float" min="0.1"  max="1000.0"  _gui-text="Support Width">6.0</param>
-			<_param name="help2"    type="description" xml:space="preserve">------------------------------</_param>
+			<separator/>
 			<param name="thickness" type="float" min="0.1"  max="1000.0"  precision="3"  _gui-text="Material Thickness">5.0</param>
 			<param name="kerf"      type="float" min="0.0"  max="1000.0"  precision="3"  _gui-text="Laser Cutter Kerf">0.01</param>
             <param name="linethickness" _gui-text="Line Thickness" type="optiongroup" appearance="minimal">
@@ -30,7 +29,7 @@
             </param>
 		</page>
 		<page name="Usage1" _gui-text="Help">
-			<_param name="use1" type="description" xml:space="preserve">Cut Craft Cylinder: Help
+			<label xml:space="preserve">Cut Craft Cylinder: Help
 
 
 Measurement Units: Unit of measurement for all subsequent values entered in this dialog.
@@ -60,7 +59,7 @@ Kerf: Laser Cutter Kerf (tolerance).  Varies based on cutter and material thickn
 Line Thickness: Thickness of the cutting line on the display.
 
 
-			</_param>
+			</label>
 		</page>
 	</param>
 	<effect>

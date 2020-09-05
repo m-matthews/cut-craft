@@ -90,3 +90,6 @@ class Part(object):
     def __str__(self):
         l = len(self.traces)
         return "(" + str(l) + " trace" + ("s" if l>1 else "") + ")"
+
+    def __lt__(self, other):
+        return self.area() < other.area()

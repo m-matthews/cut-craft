@@ -11,25 +11,25 @@ class CutCraftBox(CutCraftShape):
     def __init__(self):
         CutCraftShape.__init__(self)
 
-        self.OptionParser.add_option("--width",
-                        action="store", type="float",
+        self.arg_parser.add_argument("--width",
+                        type=float,
                         dest="width", default=6.0,
                         help="Box Width")
-        self.OptionParser.add_option("--depth",
-                        action="store", type="float",
+        self.arg_parser.add_argument("--depth",
+                        type=float,
                         dest="depth", default=6.0,
                         help="Box Depth")
-        self.OptionParser.add_option("--height",
-                        action="store", type="float",
+        self.arg_parser.add_argument("--height",
+                        type=float,
                         dest="height", default=60.0,
                         help="Box height")
 
     def effect(self):
         CutCraftShape.effect(self)
 
-        width = self.unittouu( str(self.options.width) + self.unit )
-        depth = self.unittouu( str(self.options.depth) + self.unit )
-        height = self.unittouu( str(self.options.height) + self.unit )
+        width = self.svg.unittouu( str(self.options.width) + self.unit )
+        depth = self.svg.unittouu( str(self.options.depth) + self.unit )
+        height = self.svg.unittouu( str(self.options.height) + self.unit )
 
         shape = Box(width, depth, height, self.thickness, self.kerf)
 
@@ -37,4 +37,4 @@ class CutCraftBox(CutCraftShape):
 
 if __name__ == '__main__':
     e = CutCraftBox()
-    e.affect()
+    e.run()
