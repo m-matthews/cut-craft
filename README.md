@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/m-matthews/cut-craft.svg?branch=master)](https://travis-ci.com/m-matthews/cut-craft)
+![Build Status](https://github.com/m-matthews/cut-craft/actions/workflows/push-pytest/badge.svg)
 
 # cut-craft
 
