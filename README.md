@@ -1,4 +1,4 @@
-![Build Status](https://github.com/m-matthews/cut-craft/actions/workflows/push-pytest/badge.svg)
+[![Python Test](https://github.com/m-matthews/cut-craft/actions/workflows/push-pytest.yml/badge.svg)](https://github.com/m-matthews/cut-craft/actions/workflows/push-pytest.yml)
 
 # cut-craft
 
